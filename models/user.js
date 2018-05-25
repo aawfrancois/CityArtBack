@@ -1,4 +1,5 @@
 import { Model } from 'sequelize'
+import { bcrypt } from 'bcrypt';
 
 export default class User extends Model {
   static init(sequelize, DataTypes) {
@@ -33,9 +34,23 @@ export default class User extends Model {
         }
       },
       {
-        sequelize: sequelize
-      }
+        sequelize,
+
+          hooks: {
+              beforeCreate: function(user) {
+                  if (User.password != User.password_confirm) {
+                      throw ("error password don't match!");
+                  }
+
+                  let salt = bcrypt.genSaltSync();
+                  user.password = bcrypt.hashSync(user.password, salt);
+              }
+          },
+      },
 
     )
   }
+    async checkPassword = function (password) {
+        return  bcrypt.compareSync(password,this.password)
+    }
 }

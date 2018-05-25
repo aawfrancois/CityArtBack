@@ -15,15 +15,27 @@ api.get('/:id', function (req, res) {
 });
 
 api.post('/add_user', async (req, res) => {
-  let { username, email, password, password_confirm } = req.body
+    let { username, email, password, password_confirm } = req.body
 
-  try {
-    let user = new User({ username, email, password, password_confirm })
-    let data = await user.save()
-    res.json({ data })
-  } catch (error) {
-    res.json({ error: 'error' })
-  }
+    try {
+        let user = new User({ username, email, password, password_confirm })
+        let data = await user.save()
+        res.json({ data })
+    } catch (error) {
+        res.json({ error: 'error' })
+    }
+})
+
+api.post('/add_user', async (req, res) => {
+    let { username, email, password, password_confirm } = req.body
+
+    try {
+        let user = new User({ username, email, password, password_confirm })
+        let data = await user.save()
+        res.json({ data })
+    } catch (error) {
+        res.json({ error: 'error' })
+    }
 })
 
 export default api

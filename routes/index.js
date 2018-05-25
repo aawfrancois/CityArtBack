@@ -1,4 +1,6 @@
 import { Router } from 'express'
+import passport from 'passport'
+import auth from './auth'
 import user from './user'
 import tag from './tags'
 
@@ -9,7 +11,7 @@ api.get('/', (req, res) => {
 })
 
 
-api.use('/users', user)
+api.use('/users', passport.authenticate('jwt', { session: false }), user)
 api.use('/tags', tag)
 
 export default api
