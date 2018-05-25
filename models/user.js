@@ -50,7 +50,7 @@ export default class User extends Model {
 
     )
   }
-    async checkPassword = function (password) {
+    /*async checkPassword = function (password) {
         return  bcrypt.compareSync(password,this.password)
-    }
+    }*/
 }
