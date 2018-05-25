@@ -10,8 +10,8 @@ api.get('/', (req, res) => {
   res.json({ hi: 'startupWeek API' })
 })
 
-
-api.use('/users', passport.authenticate('jwt', { session: false }), user)
+// passport.authenticate('jwt', { session: false })
+api.use('/users', user)
 api.use('/tags', tag)
 api.use ('/auth', auth)
 
