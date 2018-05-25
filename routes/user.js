@@ -8,11 +8,17 @@ api.get('/', async (req, res) => {
   res.json({ users })
 })
 
-api.post('/', async (req, res) => {
-  let { firstname, lastname, email } = req.body
+api.get('/:id', function (req, res) {
+    let user = User.findOne({where: {id: req.params.id}}).then(user => {
+        res.json({ user });
+    });
+});
+
+api.post('/add_user', async (req, res) => {
+  let { firstname, lastname, email, password } = req.body
 
   try {
-    let user = new User({ firstname, lastname, email })
+    let user = new User({ firstname, lastname, email, password })
     let data = await user.save()
     res.json({ data })
   } catch (error) {

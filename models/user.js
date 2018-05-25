@@ -26,22 +26,14 @@ export default class User extends Model {
             msg: 'Email already in use'
           }
         },
-          password: {
-              type: DataTypes.STRING,
-              allowNull: false,
-          },
+        password: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
       },
       {
         sequelize: sequelize
       }
     )
-  }
-
-  constructor({ firstname, lastname, email }) {
-    super()
-
-    this.firstname = firstname
-    this.lastname = lastname
-    this.email = email
   }
 }

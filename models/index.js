@@ -16,3 +16,6 @@ export const db = new Sequelize(process.env.DATABASE_URL, {
 // models initialization
 User.init(db, Sequelize),
 Tags.init(db, Sequelize)
+
+User.hasMany(Tags)
+Tags.belongsTo(User, { constraints: false })

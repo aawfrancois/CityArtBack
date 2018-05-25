@@ -25,12 +25,4 @@ export default class Tags extends Model {
             }
         )
     }
-
-    constructor({ message,longitude,latitude }) {
-        super()
-
-        this.message = message
-        this.longitude = longitude
-        this.latitude = latitude
-    }
 }
