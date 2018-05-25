@@ -9,10 +9,7 @@ export default class User extends Model {
           autoIncrement: true,
           primaryKey: true
         },
-        firstname: {
-          type: DataTypes.STRING
-        },
-        lastname: {
+        username: {
           type: DataTypes.STRING
         },
         email: {
@@ -30,6 +27,10 @@ export default class User extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        password_confirm: {
+            type: DataTypes.VIRTUAL,
+            allowNull: false
+        }
       },
       {
         sequelize: sequelize
