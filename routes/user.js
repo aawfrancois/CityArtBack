@@ -15,10 +15,10 @@ api.get('/:id', function (req, res) {
 });
 
 api.post('/add_user', async (req, res) => {
-  let { firstname, lastname, email, password } = req.body
+  let { username, email, password, password_confirm } = req.body
 
   try {
-    let user = new User({ firstname, lastname, email, password })
+    let user = new User({ username, email, password, password_confirm })
     let data = await user.save()
     res.json({ data })
   } catch (error) {
