@@ -15,24 +15,17 @@ api.post('/register', async (req, res) => {
     let { username, email, password, password_confirm } = req.body
 
     try {
-        let user = new User({
-            username,
-            email,
-            password,
-            password_confirm
-        })
-
-        await user.save()
-
-        res.status(201).json({ status: 201, data: { user } })
-    } catch (err) {
-        res.status(400).json({ err: err.message })
+        let user = new User({ username, email, password, password_confirm })
+        let data = await user.save()
+        res.json({ data })
+    } catch (error) {
+        res.json({ error: 'error' })
     }
 })
 
 /** About Login
  */
-api.post('/login', (req, res) => {
+/*api.post('/login', (req, res) => {
     passport.authenticate('local', { session: false }, (err, user) => {
         if (err) {
             return res.status(400).json({ err })
@@ -44,6 +37,6 @@ api.post('/login', (req, res) => {
 
         res.json({ token, data: { user } })
     })(req, res)
-})
+})*/
 
 export default api

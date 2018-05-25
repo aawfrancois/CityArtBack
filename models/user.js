@@ -34,9 +34,9 @@ export default class User extends Model {
         }
       },
       {
-        sequelize,
+        sequelize
 
-          hooks: {
+          /*hooks: {
               beforeCreate: function(user) {
                   if (User.password != User.password_confirm) {
                       throw ("error password don't match!");
@@ -45,7 +45,7 @@ export default class User extends Model {
                   let salt = bcrypt.genSaltSync();
                   user.password = bcrypt.hashSync(user.password, salt);
               }
-          },
+          }*/,
       },
 
     )
