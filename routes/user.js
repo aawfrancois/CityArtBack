@@ -22,7 +22,7 @@ api.post('/add_user', async (req, res) => {
     let data = await user.save()
     res.json({ data })
   } catch (error) {
-    res.json({ error })
+    res.json({ error: 'error' })
   }
 })
 
