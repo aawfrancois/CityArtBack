@@ -25,18 +25,18 @@ api.post('/register', async (req, res) => {
 
 /** About Login
  */
-/*api.post('/login', (req, res) => {
+api.post('/login', (req, res) => {
     passport.authenticate('local', { session: false }, (err, user) => {
         if (err) {
             return res.status(400).json({ err })
         }
 
-        const { uuid, nickname, email } = user.toJSON()
+        const { id, username, email } = user.toJSON()
 
-        let token = jwt.sign({ uuid, nickname, email }, process.env.JWT_ENCRYPTION)
+        let token = jwt.sign({ id, username, email }, process.env.JWT_ENCRYPTION)
 
         res.json({ token, data: { user } })
     })(req, res)
-})*/
+})
 
 export default api

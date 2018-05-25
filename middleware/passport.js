@@ -40,9 +40,9 @@ passport.use(
             secretOrKey: process.env.JWT_ENCRYPTION
         },
         async (jwtPayload, done) => {
-            let user = await User.findOne({ where: { uuid: jwtPayload.uuid } })
+            let user = await User.findOne({ where: { id: jwtPayload.id } })
             if (!user) {
-                return done(`User ${uuid} doesn't exist`)
+                return done(`User ${id} doesn't exist`)
             }
 
             done(false, user)
