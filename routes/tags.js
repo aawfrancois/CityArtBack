@@ -1,11 +1,13 @@
 import { Router } from 'express'
 import Tags from '../models/tags'
+import Users from '../models/user'
 
 let api = Router()
 
 api.get('/', async (req, res) => {
     let tags = await Tags.findAll()
-    res.json({ tags })
+    let user = Users.findById(Tags.User_id)
+    res.json({ tags, user })
 })
 
 api.get('/:id', function (req, res) {
