@@ -6,7 +6,7 @@ let api = Router()
 
 api.get('/', async (req, res) => {
     let tags = await Tags.findAll()
-    let user = Users.findById(Tags.User_id)
+    let user = Users.findById(1)
     res.json({ tags, user })
 })
 
