@@ -11,17 +11,20 @@ export default class Tags extends Model {
                     primaryKey: true
                 },
                 message: {
-                    type: DataTypes.STRING
+                    type: DataTypes.STRING,
+                    allowNull: false
                 },
                 longitude: {
-                    type: DataTypes.FLOAT
+                    type: DataTypes.FLOAT,
+                    allowNull: false
                 },
                 latitude: {
-                    type: DataTypes.FLOAT
+                    type: DataTypes.FLOAT,
+                    allowNull: false
                 },
             },
             {
-                sequelize: sequelize
+                sequelize
             }
         )
     }
