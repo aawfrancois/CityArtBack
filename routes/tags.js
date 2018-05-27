@@ -16,6 +16,19 @@ api.get('/:id', function (req, res) {
     });
 });
 
+api.post('/add_tag', async (req, res) => {
+    let { message, longitude, latitude, user_id } = req.body
+console.log(req.body);
+    try {
+        let tags = new Tags({ message, longitude, latitude, user_id })
+        let data = await tags.save()
+        res.json({ data })
+    } catch (error) {
+        res.json({ error: 'error' })
+    }
+});
+
+
 api.get('/tags?lng=:longitude,lat=:latitude', async (req, res) => {
     let tags = await Tags.findAll({ where: { longitude: req.query.longitude, latitude: req.query.latitude } })
 
@@ -44,28 +57,6 @@ api.get('/tags?lng=:longitude,lat=:latitude', async (req, res) => {
     })
 })
 
-api.post('/add_tag', async (req, res) => {
-    let { message, longitude, latitude, user_id } = req.body
 
-    try {
-        let tags = new Tags({ message, longitude, latitude, user_id })
-        let data = await tags.save()
-        res.json({ data })
-    } catch (error) {
-        res.json({ error: 'error' })
-    }
-});
-
-api.post('/', async (req, res) => {
-    let { message, longitude, latitude } = req.body
-
-    try {
-        let Tag = new Tags({ message, longitude, latitude } )
-        let data = await Tag.save()
-        res.json({ data })
-    } catch (error) {
-        res.json({ error })
-    }
-})
 
 export default api
