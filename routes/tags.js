@@ -6,8 +6,8 @@ let api = Router()
 
 api.get('/', async (req, res) => {
     let tags = await Tags.findAll()
-    let user = await Users.findById(1)
-    res.json({ tags, user })
+    // let user = await Users.findById()
+    res.json({ tags })
 })
 
 api.get('/:id', function (req, res) {
@@ -44,23 +44,15 @@ api.get('/tags?lng=:longitude,lat=:latitude', async (req, res) => {
     })
 })
 
-api.post('/add_tag?lng=:longitude,lat=:latitude', async (req, res) => {
-
-    var data = {
-        "fruit": {
-            "logitude": req.params.longitude,
-            "lagitude": req.params.latitude
-        }
-    };
-
-    let { message, longitude, latitude, User_id } = req.body
+api.post('/add_tag', async (req, res) => {
+    let { message, longitutude, latittude, user_id } = req.body
 
     try {
-        let Tag = new Tags({ message, longitude, latitude, User_id } )
-        let data = await Tag.save()
+        let tags = new Tags({ message, longitutude, latittude, user_id })
+        let data = await tags.save()
         res.json({ data })
     } catch (error) {
-        res.json({ error })
+        res.json({ error: 'error' })
     }
 });
 
