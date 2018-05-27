@@ -45,10 +45,10 @@ api.get('/tags?lng=:longitude,lat=:latitude', async (req, res) => {
 })
 
 api.post('/add_tag', async (req, res) => {
-    let { message, longitutude, latittude, user_id } = req.body
+    let { message, longitude, latitude, user_id } = req.body
 
     try {
-        let tags = new Tags({ message, longitutude, latittude, user_id })
+        let tags = new Tags({ message, longitude, latitude, user_id })
         let data = await tags.save()
         res.json({ data })
     } catch (error) {
