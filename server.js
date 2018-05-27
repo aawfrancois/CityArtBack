@@ -14,7 +14,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extend: false }))
 
-db.sync({force: true}).then(() => {
+db.sync().then(() => {
   app.use('/api', routes)
 
   app.listen(process.env.PORT, err => {
