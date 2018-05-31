@@ -10,11 +10,11 @@ api.get('/', async (req, res) => {
     res.json({ tags })
 })
 
-/*api.get('/:id', function (req, res) {
+api.get('/:id', function (req, res) {
     let tag = Tags.findOne({where: {id: req.params.id}}).then(tag => {
         res.json({ tag });
     });
-});*/
+});
 
 api.post('/add_tag', async (req, res) => {
     let { message, longitude, latitude, user_id } = req.body
@@ -28,35 +28,6 @@ console.log(req.body);
     }
 });
 
-
-/*
-api.get('/tags?lng=:longitude,lat=:latitude', async (req, res) => {
-    let tags = await Tags.findAll({ where: { longitude: req.query.longitude, latitude: req.query.latitude } })
-
-    data = []
-    for (let tag of tags) {
-
-
-    }
-
-    data.push(entry);
-    res.json({ data })
-    res.json({
-        "longitude":req.query.longitude,
-        "latitude":req.query.latitude,
-        "tags": [
-            {
-                "id": Tags.id,
-                "msg":Tags.message,
-                "user": {
-                    "id": Tags.User_id,
-                    "firstname": Tags.user.firstname,
-                    "lastname": Tags.user.lastname,
-                }
-            }
-        ]
-    })
-})*/
 
 
 

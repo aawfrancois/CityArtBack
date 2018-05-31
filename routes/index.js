@@ -13,6 +13,6 @@ api.get('/', (req, res) => {
 // passport.authenticate('jwt', { session: false })
 api.use('/users', user)
 api.use('/tags', tag)
-api.use ('/auth', auth)
+api.use('/auth', passport.authenticate('jwt', { session: false }), auth)
 
 export default api
