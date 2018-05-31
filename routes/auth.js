@@ -35,6 +35,7 @@ api.post('/login', (req, res) => {
 
         let token = jwt.sign({ id, username, email }, process.env.JWT_ENCRYPTION)
 
+
         res.json({ token, data: { user } })
     })(req, res)
 })
