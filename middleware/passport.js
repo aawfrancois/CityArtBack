@@ -14,6 +14,7 @@ passport.use(
             passwordField: 'password'
         },
         async (email, password, done) => {
+
             try {
                 let user = await User.findOne({ where: { email } })
 
@@ -27,7 +28,9 @@ passport.use(
 
                 return done(false, user)
             } catch (err) {
+                console.log(err)
                 done('Something wrong happens')
+
             }
         }
     )

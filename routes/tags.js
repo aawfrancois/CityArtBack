@@ -6,7 +6,6 @@ let api = Router()
 
 api.get('/', async (req, res) => {
     let tags = await Tags.findAll()
-    // let user = await Users.findById()
     res.json({ tags })
 })
 
@@ -18,7 +17,7 @@ api.get('/:id', function (req, res) {
 
 api.post('/add_tag', async (req, res) => {
     let { message, longitude, latitude, user_id } = req.body
-console.log(req.body);
+
     try {
         let tags = new Tags({ message, longitude, latitude, user_id })
         let data = await tags.save()
@@ -27,8 +26,5 @@ console.log(req.body);
         res.json({ error: 'error' })
     }
 });
-
-
-
 
 export default api

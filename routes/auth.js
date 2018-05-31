@@ -19,7 +19,7 @@ api.post('/register', async (req, res) => {
         let data = await user.save()
         res.json({ data })
     } catch (error) {
-        res.json({ error: 'error' })
+        res.json({ error })
     }
 })
 
@@ -30,11 +30,10 @@ api.post('/login', (req, res) => {
         if (err) {
             return res.status(400).json({ err })
         }
-
+console.log(user)
         const { id, username, email } = user.toJSON()
 
         let token = jwt.sign({ id, username, email }, process.env.JWT_ENCRYPTION)
-
 
         res.json({ token, data: { user } })
     })(req, res)
