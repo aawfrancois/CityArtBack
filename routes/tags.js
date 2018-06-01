@@ -15,7 +15,7 @@ api.get('/:id', function (req, res) {
     });
 });
 
-api.post('/add_tag', passport.authenticate('jwt', { session: false }), async (req, res) => {
+api.post('/add_tag', async (req, res) => {
     let { message, longitude, latitude, user_id } = req.body
 
     try {
