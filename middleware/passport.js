@@ -28,7 +28,6 @@ passport.use(
 
                 return done(false, user)
             } catch (err) {
-                console.log(err)
                 done('Something wrong happens')
 
             }
