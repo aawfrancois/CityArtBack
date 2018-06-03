@@ -16,7 +16,7 @@ passport.use(
         async (email, password, done) => {
 
             try {
-                let user = await User.findOne({ where: { email } })
+                let user = await User.findOne({where: {email}})
 
                 if (!user) {
                     return done(`Can't find user ${email}`)
@@ -42,7 +42,7 @@ passport.use(
             secretOrKey: process.env.JWT_ENCRYPTION
         },
         async (jwtPayload, done) => {
-            let user = await User.findOne({ where: { id: jwtPayload.id } })
+            let user = await User.findOne({where: {id: jwtPayload.id}})
             if (!user) {
                 return done(`User ${id} doesn't exist`)
             }

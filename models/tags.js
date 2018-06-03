@@ -1,4 +1,3 @@
-
 import { Model } from 'sequelize'
 
 export default class Tags extends Model {

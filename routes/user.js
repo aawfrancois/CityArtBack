@@ -3,17 +3,26 @@ import User from '../models/user'
 
 let api = Router()
 
+/**
+ * Get all users
+ */
 api.get('/', async (req, res) => {
   let users = await User.findAll()
   res.json({ users })
 })
 
+/**
+ * Get one user by Id
+ */
 api.get('/:id', function (req, res) {
     let user = User.findOne({where: {id: req.params.id}}).then(user => {
         res.json({ user });
     });
 });
 
+/**
+ * add tag
+ */
 api.post('/add_user', async (req, res) => {
     let { username, email, password, password_confirm } = req.body
 

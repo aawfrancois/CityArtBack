@@ -9,7 +9,8 @@ dotenv.config()
 
 let api = Router()
 
-/** About Sign-up
+/**
+ * About Sign-up
  */
 api.post('/register', async (req, res) => {
     let { username, email, password, password_confirm } = req.body
@@ -23,7 +24,8 @@ api.post('/register', async (req, res) => {
     }
 })
 
-/** About Login
+/**
+ * About Login
  */
 api.post('/login', (req, res) => {
     passport.authenticate('local', { session: false }, (err, user) => {

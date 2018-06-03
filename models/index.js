@@ -7,15 +7,15 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export const db = new Sequelize(process.env.DATABASE_URL, {
-  operatorsAliases: Op,
-  define: {
-    underscored: true
-  }
+    operatorsAliases: Op,
+    define: {
+        underscored: true
+    }
 })
 
 // models initialization
 User.init(db, Sequelize),
-Tags.init(db, Sequelize)
+    Tags.init(db, Sequelize)
 
 User.hasMany(Tags)
-Tags.belongsTo(User, { constraints: false })
+Tags.belongsTo(User, {constraints: false})
