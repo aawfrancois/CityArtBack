@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import Tags from '../models/tags'
 import Users from '../models/user'
+import passport from 'passport'
 
 let api = Router()
 
@@ -15,7 +16,7 @@ api.get('/:id', function (req, res) {
     });
 });
 
-api.post('/add_tag', async (req, res) => {
+api.post('/add_tag', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let { message, longitude, latitude, user_id } = req.body
 
     try {
